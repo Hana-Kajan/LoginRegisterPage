@@ -1,0 +1,51 @@
+.registration-page {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    min-height: 25vh;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    padding-top: 100px;
+
+    label {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: black;
+    }
+
+    input{
+        font-size: 20px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        color: black;
+    }
+
+    select {
+        font-size: 20px;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        color: black;
+    }
+
+    option {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: black;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: backgorund-color 0.3s ease;
+    
+
+    &:hover {
+        background-color: #0056b3;
+    }
+}
+}

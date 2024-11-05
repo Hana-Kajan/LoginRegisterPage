@@ -1,6 +1,8 @@
 import { randomInt } from "crypto";
 import React, { FC,useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Registration.scss";
+import { json } from "stream/consumers";
 
  export const Registration: FC = ({}) => {
   const [email,setEmail] =useState("");
@@ -10,16 +12,23 @@ import { useNavigate } from "react-router-dom";
   const [country,setCountry] =useState("");
   const navigate = useNavigate();
 
-function spasi()
+  const handleRegister=()=> {
+    localStorage.setItem("user", JSON.stringify({email, password}));
+    navigate("/login");
+  };
+  console.log(localStorage.getItem("user"));
+
+/*function spasi()
 {
   console.log(`Email : ${email}, Name : ${name}, Gender : ${gender}, Country : ${country}`);
 
-  navigate("/welcome", { state: { message: "Uspješno ste se registrovali!" } });
+  navigate("/welcome", { state: { message: `Uspješno ste se registrovali, ${name} !` } });
 }
+  */
 
 return( 
 
-      <div>
+      <div className="registration-page">
       <label>Name:
       <input type="text" value={name} onChange={(e)=>setName((e.target.value))}></input>
       </label>
@@ -50,7 +59,7 @@ return(
 
       <p></p>
     
-      <button onClick={spasi}>Spasi</button>
+      <button onClick={handleRegister}>Spasi</button>
 
     </div>
   );

@@ -1,25 +1,26 @@
 import React, { FC, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Uvezi useNavigate iz react-router-dom
-import { Login } from "../Login"; // Importuj Login komponentu
-import { Registration } from "../Registration"; // Importuj Registration komponentu
+import { useNavigate } from "react-router-dom";
+import { Login } from "../Login";
+import { Registration } from "../Registration";
+import "./HomePage.scss";
 
 export const HomePage: FC = () => {
-  const navigate = useNavigate(); // Inicijalizuj useNavigate
+  const navigate = useNavigate();
 
   const handleLoginClick = () => {
-    navigate("/login"); // Navigiraj na login putanju
+    navigate("/login");
   };
 
   const handleRegisterClick = () => {
-    navigate("/register"); // Navigiraj na register putanju
+    navigate("/register");
   };
 
   return (
-    <div>
-      <h1>Welcome to Home Page</h1>
-      <div>
-        <button onClick={handleLoginClick}>Login</button>
-        <button onClick={handleRegisterClick}>Register</button>
+    <div className="home-page">
+      <div className="home-page__welcome">
+      <h1>Dobrodošli!</h1>
+      
+        <button className="home-page__start-button" onClick={()=>navigate("/register")}>Registracija</button>
       </div>
     </div>
   );
