@@ -13,9 +13,13 @@ import { Login } from "./components/Login";
 
 export const App: FC = () => {
   return (
-   <div>
-    <HomePage/>
-   </div>
+   <Routes>
+    <Route path="/" element={<HomePage/>}/>
+    <Route path="/register" element={<Registration/>}/>
+    <Route path="/login" element={<Login/>}/>
+    <Route path="/welcome" element={<WelcomePage/>}/>
+    <Route path="*" element={<Navigate to="/"/>}/>
+   </Routes>
   );
 };
 

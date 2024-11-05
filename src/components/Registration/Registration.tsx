@@ -1,20 +1,20 @@
 import { randomInt } from "crypto";
 import React, { FC,useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
-
-type RegistrationProps ={
-  onRegister: (username: string, password: string) => void;
-}
- export const Registration: FC<RegistrationProps> = ({onRegister}) => {
+ export const Registration: FC = ({}) => {
   const [email,setEmail] =useState("");
   const [name,setName] =useState("");
   const [password,setPassword] =useState("");
   const [gender,setGender] =useState("");
   const [country,setCountry] =useState("");
+  const navigate = useNavigate();
 
 function spasi()
 {
   console.log(`Email : ${email}, Name : ${name}, Gender : ${gender}, Country : ${country}`);
+
+  navigate("/welcome", { state: { message: "Uspješno ste se registrovali!" } });
 }
 
 return( 

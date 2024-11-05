@@ -1,44 +1,26 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { FC, useState } from "react";
+import { useNavigate } from "react-router-dom"; // Uvezi useNavigate iz react-router-dom
+import { Login } from "../Login"; // Importuj Login komponentu
+import { Registration } from "../Registration"; // Importuj Registration komponentu
 
-import { Registration } from "../Registration";
-import { Login } from "../Login";
-
- export const HomePage: React.FC = () => {
-  const [isLogin, setIsLogin] = useState(false);
-  const [isRegister, setIsRegister] = useState(false);
+export const HomePage: FC = () => {
+  const navigate = useNavigate(); // Inicijalizuj useNavigate
 
   const handleLoginClick = () => {
-    setIsLogin(true);
-    setIsRegister(false);
+    navigate("/login"); // Navigiraj na login putanju
   };
 
   const handleRegisterClick = () => {
-    setIsRegister(true);
-    setIsLogin(false);
+    navigate("/register"); // Navigiraj na register putanju
   };
 
-  const handleLogin = (username: string, password: string) => {
-    console.log('Login:', username, password);
-    // Logika za autentifikaciju
-  };
-
-  const handleRegister = (username: string, password: string) => {
-    console.log('Register:', username, password);
-    // Logika za registraciju
-  };
-return(
-  
-  <div>
-  <h1>Welcome to Home Page</h1>
-  {!isLogin && !isRegister && (
+  return (
     <div>
-      <button onClick={handleLoginClick}>Login</button>
-      <button onClick={handleRegisterClick}>Register</button>
+      <h1>Welcome to Home Page</h1>
+      <div>
+        <button onClick={handleLoginClick}>Login</button>
+        <button onClick={handleRegisterClick}>Register</button>
+      </div>
     </div>
-  )}
-
-  {isLogin && <Login onLogin={handleLogin} />}
-  {isRegister && <Registration onRegister={handleRegister} />}
-</div>
   );
 };
