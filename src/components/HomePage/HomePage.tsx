@@ -15,6 +15,8 @@ export const HomePage: FC = () => {
     navigate("/register");
   };
 
+
+  const[id, postaviID]=useState(1);
   const[podatak, postaviPodatak]=useState({
     body: "",
     id:null,
@@ -31,15 +33,34 @@ export const HomePage: FC = () => {
       });
   }
 
-  //useEffect(()=> {
-    //dohvatiPodatke();
-  //}, []);
+  useEffect(()=> {
+    fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
+    .then((res)=>res.json())
+    .then((data)=>postaviPodatak(data));
+  }, [id]);
+
+  function idPromjena(e:
+    React.ChangeEvent<HTMLInputElement>) {
+      const value=Number(e.target.value);
+      if (value >=1 && value<=100) {
+        postaviID(value);
+      }
+    }
+  
 
   return (
     <div className="home-page">
       <div className="home-page__welcome">
       <h1>Dobrodošli!</h1>
-      
+      <label htmlFor="broj">Unesi id poruke:</label>
+      <input onChange={idPromjena}
+       type="number"
+       min={1}
+       max={100}
+       value={id}
+       id="broj" />
+       <h3>{podatak.title}</h3>
+       <p>{podatak.body}</p>
         <button className="home-page__start-button" onClick={()=>navigate("/register")}>Registracija</button>
         <button onClick={dohvatiPodatke}>Dohvati Podatke</button>
         {podatak.id && (
@@ -50,6 +71,7 @@ export const HomePage: FC = () => {
           <p>Body: {podatak.body}</p>
           <p>User ID: {podatak.userId}</p>
         </div>
+        
         )}
       </div>
     </div>
